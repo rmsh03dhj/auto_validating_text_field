@@ -1,6 +1,6 @@
 name: auto_validating_text_field
 description: To validate text field as soon as its value changes.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/auto_validating_text_field.git
 
 environment:
