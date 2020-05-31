@@ -6,4 +6,7 @@
    
  ## [0.1.0] - 2020-05-31
    First stable release
+   
+  ## [0.1.1] - 2020-05-31
+   Updating rx dart package
 
