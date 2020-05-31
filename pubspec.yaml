@@ -1,7 +1,7 @@
 name: auto_validating_text_field
-description: To validate text field as soon as its value changes.
-version: 0.0.2
-homepage: https://github.com/auto_validating_text_field.git
+description: To validate text field as soon as its value changes. We can add list of validators for different cases and it shows error message depending upon the conditions unsatisfied.
+version: 0.1.0
+homepage: https://github.com/rmsh03dhj/auto_validating_text_field.git
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  rxdart: ^0.20.0
+  rxdart:
 
 dev_dependencies:
   flutter_test:
