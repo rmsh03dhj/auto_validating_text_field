@@ -111,12 +111,12 @@ class _AutoValidatingTextFormFieldState
     extends State<AutoValidatingTextFormField> {
   final GlobalKey<FormFieldState> _fieldKey = GlobalKey<FormFieldState>();
   bool _autoValidate = false;
-  final _validationRequired = BehaviorSubject<bool>(seedValue: false);
+  final _validationRequired = BehaviorSubject<bool>();
 
   @override
   void initState() {
     super.initState();
-
+    _validationRequired.add(false);
     widget.controller.addListener(() {
       if (widget.controller.text.isNotEmpty) {
         _validationRequired.add(true);
