@@ -103,12 +103,10 @@ class AutoValidatingTextFormField extends StatefulWidget {
   });
 
   @override
-  _AutoValidatingTextFormFieldState createState() =>
-      _AutoValidatingTextFormFieldState();
+  _AutoValidatingTextFormFieldState createState() => _AutoValidatingTextFormFieldState();
 }
 
-class _AutoValidatingTextFormFieldState
-    extends State<AutoValidatingTextFormField> {
+class _AutoValidatingTextFormFieldState extends State<AutoValidatingTextFormField> {
   final GlobalKey<FormFieldState> _fieldKey = GlobalKey<FormFieldState>();
   bool _autoValidate = false;
   final _validationRequired = BehaviorSubject<bool>();
@@ -116,17 +114,28 @@ class _AutoValidatingTextFormFieldState
   @override
   void initState() {
     super.initState();
+
+    ///this is for the first time only
+    ///as we can have null value for the first time
+    ///so it doesn't validate initially
     _validationRequired.add(false);
+
+    ///starts validating as soon as value changes
     widget.controller.addListener(() {
       if (widget.controller.text.isNotEmpty) {
         _validationRequired.add(true);
-      }
-      if (_validationRequired.value && widget.focusNode.hasFocus) {
-        if (!_fieldKey.currentState.validate()) {
-          setState(() {
-            _autoValidate = true;
-          });
+
+        if (_validationRequired.value && widget.focusNode.hasFocus) {
+          if (!_fieldKey.currentState.validate()) {
+            setState(() {
+              _autoValidate = true;
+            });
+          }
         }
+      } else {
+        setState(() {
+          _autoValidate = true;
+        });
       }
     });
   }
@@ -140,8 +149,7 @@ class _AutoValidatingTextFormFieldState
       controller: widget.controller,
       validator: (val) {
         for (int i = 0; i < widget.validators.length; i++) {
-          if (widget.validators[i](val) != null)
-            return widget.validators[i](val);
+          if (widget.validators[i](val) != null) return widget.validators[i](val);
         }
         return null;
       },
