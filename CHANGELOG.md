@@ -11,5 +11,5 @@
    Updating rx dart package
    
   ## [0.1.2] - 2020-06-14
-   Updating logic to consider the empty value once user delete the content
+   Updating logic to consider the empty value once user deletes the content
 
