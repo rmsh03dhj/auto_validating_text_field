@@ -12,4 +12,7 @@
    
   ## [0.1.2] - 2020-06-14
    Updating logic to consider the empty value once user deletes the content
+   
+  ## [0.1.3] - 2020-06-21
+   Supporting older version of rxDart as well.
 
