@@ -15,4 +15,7 @@
    
   ## [0.1.3] - 2020-06-21
    Supporting older version of rxDart as well.
+   
+  ## [0.1.4] - 2020-07-12
+   Updating rx dart package and adding logic to determine whether to auto validate or not initially depending upon textfield value. If its empty, it doesn't validate else it will validate.
 
