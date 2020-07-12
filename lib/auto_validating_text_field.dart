@@ -115,10 +115,13 @@ class _AutoValidatingTextFormFieldState extends State<AutoValidatingTextFormFiel
   void initState() {
     super.initState();
 
-    ///this is for the first time only
-    ///as we can have null value for the first time
-    ///so it doesn't validate initially
-    _validationRequired.add(false);
+    if (widget.controller.text.isNotEmpty) {
+      setState(() {
+        _autoValidate = true;
+      });
+    } else {
+      _validationRequired.add(false);
+    }
 
     ///starts validating as soon as value changes
     widget.controller.addListener(() {
@@ -133,9 +136,15 @@ class _AutoValidatingTextFormFieldState extends State<AutoValidatingTextFormFiel
           }
         }
       } else {
-        setState(() {
-          _autoValidate = true;
-        });
+        if (_validationRequired.value) {
+          setState(() {
+            _autoValidate = true;
+          });
+        } else {
+          setState(() {
+            _autoValidate = false;
+          });
+        }
       }
     });
   }
